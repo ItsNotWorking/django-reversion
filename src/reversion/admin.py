@@ -189,7 +189,7 @@ class VersionAdmin(admin.ModelAdmin):
                 new_object = obj
             prefixes = {}
             for FormSet, inline in zip(self.get_formsets(request, new_object),
-                                       self.inline_instances):
+                                       self.get_inline_instances(request)):
                 prefix = FormSet.get_default_prefix()
                 prefixes[prefix] = prefixes.get(prefix, 0) + 1
                 if prefixes[prefix] != 1:
